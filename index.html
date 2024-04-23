@@ -1,38 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Enlace a la hoja de estilos de Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <!-- Hoja de estilos personalizada -->
-    <link rel="stylesheet" type="text/css" href="style.css" />
-      <!-- Scripts JavaScript -->
-    <script src="scripts.js"></script>
-    <!-- Fin de Scripts JavaScript -->
-    <title>Document</title>
-</head>
-<body>
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+  <title>Mi Promedio - Promedio de notas</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Calculadora de promedios y porcentajes">
+  <meta name="keywords" content="promedio, porcentaje, notas, cálculo">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/bootstrap.css" media="screen">
+  <link rel="stylesheet" href="css/custom.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet">
+  <script type="text/javascript" charset="utf-8" src="jquery/jquery.js"></script>
+  <script src="js/botones.js" type="text/javascript"></script>
+  <script src="js/promedio.js" type="text/javascript"></script>
+  <script src="js/validar.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <div class="navbar navbar-default navbar-fixed-top">
+     <div class="container">
+        <div class="navbar-collapse collapse" id="navbar-main">
+           <ul class="nav navbar-nav">
+              <li><a href="./index.html">Inicio</a></li>
+           </ul>
         </div>
-    </nav>
-    <div class="container text-center">
+     </div>
+  </div>
+  <h2 align="center">Promedio</h2>
+  <p align="center">
+     <br>
+     <br>
+  <div class="table-responsive">
+     <table class="table table-hover" id="tablaNotas" align="center" style="width:50%;">
+        <form method="POST" id="estilo1" onkeyup="promedio();"></form>
+        <!--NOTAS-->
+        <tbody>
+           <tr>
+              <td class="nota">Nota 1</td>
+              <td> 
+                 <input type="text" id="nota1" class="textNota form-control" onkeyup="promedio();" onfocus="if (this.value=='0') this.value='';" value="0">
+              </td>
+              <td>
+                 <input type="text" id="porcentaje1" class="textPorcentaje form-control" onkeyup="promedio(); validar();" onfocus="if (this.value=='0') this.value='';" value="0">
+              </td>
+              <td>%</td>
+           </tr>
+           <tr>
+              <td class="nota">Nota 2</td>
+              <td><input type="text" id="nota2" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();">
+              </td>
+              <td><input type="text" id="porcentaje2" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr>
+              <td class="nota">Nota 3</td>
+              <td><input type="text" id="nota3" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();">
+              </td>
+              <td><input type="text" id="porcentaje3" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr id="notaa4">
+              <td class="nota">Nota 4</td>
+              <td><input type="text" id="nota4" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje4" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa5">
+              <td class="nota">Nota 5</td>
+              <td><input type="text" id="nota5" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje5" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa6">
+              <td class="nota">Nota 6</td>
+              <td><input type="text" id="nota6" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje6" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa7">
+              <td class="nota">Nota 7</td>
+              <td><input type="text" id="nota7" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje7" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa8">
+              <td class="nota">Nota 8</td>
+              <td><input type="text" id="nota8" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje8" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa9">
+              <td class="nota">Nota 9</td>
+              <td><input type="text" id="nota9" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje9" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td>%</td>
+           </tr>
+           <tr style="display:none" id="notaa10">
+              <td class="nota">Nota 10</td>
+              <td><input type="text" id="nota10" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" style="width:20%;" onkeyup="promedio();"></td>
+              <td><input type="text" id="porcentaje10" value="0" onfocus="if (this.value=='0') this.value='';" class="textPorcentaje form-control" style="width:20%;" onkeyup="promedio(); validar();">
+              </td>
+              <td>%</td>
+           </tr>
+        </tbody>
+     </table>
+  </div>
+  <table align="center">
+     <!--BOTONES NOTAS-->
+     <tbody>
+        <tr id="boton1" style="display:block">
+           <td colspan="3"><input value="+" type="button" onclick="boton1()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+        <tr id="boton2" style="display:none">
+           <td colspan="3"><input value="+" type="button" onclick="boton2()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+        <tr id="boton3" style="display:none">
+           <td colspan="3"><input value="+" type="button" onclick="boton3()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+        <tr id="boton4" style="display:none">
+           <td colspan="3"><input value="+" type="button" onclick="boton4()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+        <tr id="boton5" style="display:none">
+           <td colspan="3"><input value="+" type="button" onclick="boton5()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+        <tr id="boton6" style="display:none">
+           <td colspan="3"><input value="+" type="button" onclick="boton6()" class="agregarNotas btn btn-primary"></td>
+        </tr>
+     </tbody>
+  </table>
+  <table align="center">
+     <tbody>
+        <tr id="botonControl1" style="display:block" align="center">
+           <td><input value="Agregar Notas Parciales" type="button" onclick="botonControl1()" class="notasParciales  btn btn-success"></td>
+        </tr>
+     </tbody>
+  </table>
+  <table align="center" border="0">
+     <tbody>
+        <tr id="promedioControles" style="display:none">
+           <td><b>Notas Parciales</b></td>
+           <td><input type="number" id="promedioControl" value="0" onfocus="if (this.value=='0') this.value='';" class="textNota form-control" name="promedioControl" onkeyup="promedio();"></td>
+           <td><input name="porcentajeControles" type="number" class="textNota form-control" id="pControl" value="0" onfocus="if (this.value=='0') this.value='';" onkeyup="promedio(); validar();"></td>
+           <td>%</td>
+        </tr>
+     </tbody>
+  </table>
+  <hr>
+  <br>
+  <footer class="footer_mipromedio">
+     <div class="footer_contenido">
         <div class="row">
-          <div class="col">
-            <input class="form-control" type="number" id="cajaNumero" placeholder="Nota">
-            <input class="btn btn-primary" type="button" value="Calcular" onclick="sumar()">
-
-          </div>
-          <div class="col">
-            Column
-          </div>
-          <div class="col">
-            Column
-          </div>
+           <div class="col-xs-12">
+              <div class="col-xs-6" align="right">
+                 <label>Promedio</label>
+                 <input type="text" size="8" id="total" readonly="" value="0" class="form-control" style="max-width: 10%;min-width: 70px;">
+              </div>
+              <div class="col-xs-6" align="left">    
+                 <label>Promedio Final</label>
+                 <input type="text" size="8" id="pFinal" readonly="" value="0" class="form-control" style="max-width: 10%;min-width: 70px;">
+              </div>
+           </div>
         </div>
-      </div>
-</body>
-</html>
+     </div>
+  </footer>
+  <table align="center" border="0">
+  <tbody>
+     <tr id="darExamen" style="display:block" align="center">
+        <td colspan="4">
+           <h3 align="center">Presiona si darás examen</h3>
+           <input value="Dar Examen" type="button" onclick="darExamen()" class="notasParciales btn btn-danger">
+        </td>
+     </tr>
+     <tr id="notaExamen" style="display:none">
+        <td style="color:#FF2F2F"><b>Nota Examen</b></td>
+        <td>
+           <p>
+              <input name="nExamen" type="text" class="textNota form-control" id="nExamen" value="0" onfocus="if (this.value=='0') this.value='';" onkeyup="promedio();">
+           </p>
+        </td>
+        <td>
+           <p>
+              <input name="pExamen" type="text" class="textNota form-control" id="pExamen" value=" %" onfocus="if (this.value==' %') this.value='';" onkeyup="promedio();" size="15">
+           </p>
+        </td>
+        <td>&nbsp;</td>
+     </tr>
+     <tr id="notaNecesito" style="display:none">
+        <td colspan="4" align="center"> Nota que necesito 
+           <input type="text" style="width:20%;" id="notaQueNecesito" size="8" class="textNota form-control">
+        </td>
+     </tr>
+     </div>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     </body>
