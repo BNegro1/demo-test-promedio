@@ -43,11 +43,12 @@ assert promedio == "8.5"  # Cambia el valor según sea necesario
 
 # Esperar hasta que el botón "Dar Examen" esté presente y sea clickeable
 dar_examen_btn = WebDriverWait(driver, 20).until(
-    EC.element_to_be_clickable((By.ID, "darExamen"))
+    EC.element_to_be_clickable((By.XPATH, "//input[@value='Dar Examen']"))
 )
 
 # Dar clic en "Dar Examen"
 dar_examen_btn.click()
+
 
 # Esperar hasta que el elemento "nExamen" esté presente y sea interactuable
 nota_examen = WebDriverWait(driver, 20).until(
